@@ -1,0 +1,21 @@
+#enterButton {
+	display: inline-block;
+}
+
+#inputForm {
+	display: inline-block;
+}
+
+#inputBox {
+	height: 18px;
+	width: 300px;
+	font-size: 15px
+}
+
+.playerCommand {
+
+}
+
+.DMMessage {
+	
+}
