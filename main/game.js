@@ -3,13 +3,17 @@ var game = {
   dm: "DM",
   player: "Player",
   itemList: {},
+  commandHistory: {history: [], index: -1},
 
   init: function() {
     $(document).ready(function() {
 
       game.itemList = createItemList();
 
-      game.displayMessage(game.dm, "Welcome!  Enter a command")
+      game.displayMessage(game.dm, "Welcome!  Enter a command");
+
+      //clear command box on startup
+      $("#inputBox").val("");
 
       //clicking submit to send command
       $("#enterButton").on("click", function(event) {
@@ -17,21 +21,41 @@ var game = {
         $("#inputBox").val("");
       });
 
-      //pressing enter to send command
-      $('#inputForm').keypress(function (event) {
-        if (event.which == 13) {
+      //keyboard input while typing
+      $('#inputForm').keydown(function (event) {
+        //pressing enter to submit
+        if (event.which === 13) {
           game.sendCommand();
+          game.commandHistory.history.unshift($("#inputBox").val());
+          game.commandHistory.index = -1;
           $("#inputBox").val("");
           return false;
         }
+        //pressing up to scroll command history
+        if (event.which === 38) {
+          if(game.commandHistory.index < game.commandHistory.history.length-1) {
+            game.commandHistory.index++;
+            $("#inputBox").val(game.commandHistory.history[game.commandHistory.index]);
+            return false;
+          }
+        }
+        //pressing down to scroll command history
+        if (event.which === 40) {
+          if(game.commandHistory.index > -1) {
+            game.commandHistory.index--;
+            $("#inputBox").val(game.commandHistory.history[game.commandHistory.index]);
+            return false;
+          }
+        }
       });
+
     });
   },
 
   sendCommand: function() {
     var msg = $("#inputBox").val();
     game.displayMessage(game.player, msg);
-    setTimeout(game.processCommand.bind(null, msg), 1000);
+    setTimeout(game.processCommand.bind(null, msg), 700);
     
   },
 
