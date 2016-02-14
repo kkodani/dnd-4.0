@@ -67,7 +67,7 @@ var game = {
                       +message+
                     "</span></p>"
                   +"</div>");
-    $("#gameArea").prepend($newMsg);
+    $("#messagesArea").prepend($newMsg);
   },
 
   processCommand: function(uneditedMsg) {

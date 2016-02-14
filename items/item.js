@@ -7,10 +7,10 @@ var Item = function(name, price, weight) {
 };
 
 Item.prototype.getInfo = function() {
-  var str = "";
+  var str = "Item Lookup:";
   for(var k in this) {
   	if(typeof this[k] !== "function") {
-  		str+="    "+k+": "+this[k];
+  		str+="\n\t"+k+": "+this[k];
   	}
   }
   return str;

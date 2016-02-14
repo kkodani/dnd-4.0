@@ -1,0 +1,48 @@
+#textSide {
+	width: 46%;
+	border-style: solid;
+	border-color: blue;
+	padding: 10px;
+	display: inline-block;
+	float: left;
+}
+
+#enterButton {
+	display: inline-block;
+}
+
+#inputForm {
+	display: inline-block;
+}
+
+#inputBox {
+	height: 18px;
+	width: 300px;
+	font-size: 15px
+}
+
+#messagesArea {
+	overflow: scroll;
+}
+
+#boardSide {
+	margin-left: 10px;
+	width: 46%;
+	height: 1000px;
+	border-style: solid;
+	border-color: red;
+  padding: 10px;
+	display: inline-block;
+}
+
+.playerCommand {
+
+}
+
+.DMMessage {
+	
+}
+
+.message {
+	white-space: pre-wrap;
+}
